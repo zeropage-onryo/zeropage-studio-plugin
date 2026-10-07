@@ -16,16 +16,23 @@ price in front of every spend.
 - **A connector**: the studio's remote MCP server at
   `https://zeropage-studio.fly.dev/mcp`. You sign in with your Zero Page Studio
   account; the tools read and write your own board and nobody else's.
-- **Four skills** that teach Claude the studio workflow:
+- **Five skills** that teach Claude the studio workflow:
   - `concept-board` — a brief becomes two to four ideas you choose between, then
     cards on your board. Reads and decisions only.
-  - `look-matching` — the visual look from reference images, by id, with the
-    page each came from. The studio grounds on photographs you attach, never on
-    a name.
-  - `render-and-status` — writing a scene, drawing keyframes, rendering a clip
-    and following a job, always with the price shown and your yes first.
+  - `write-scene` — Claude writes the scene prompt in the studio's shape (an
+    opening line naming your photos, a style block, timed shots, diegetic
+    sound, an avoid list) and saves it against the photos you uploaded.
+  - `look-matching` — the visual look, from your own element photos and from a
+    frame you describe. The studio renders against photographs you uploaded,
+    never a name and never an image off the web.
+  - `render-and-status` — quoting the keyframes and the clip, approving on your
+    yes, following the job.
   - `credits-and-limits` — what is free, what costs credits, what a refusal or
     a 429 means.
+
+The connector offers these tools: `board`, `idea`, `search`, `capture`, `pick`,
+`shoot`, `archive`, `stats`, `elements`, `write_scene`, `quote`, `approve`,
+`job`. Only `approve` spends, and only after `quote` has shown the price.
 
 ## Before you use it
 
@@ -42,25 +49,24 @@ price in front of every spend.
 2. "I want a 10-second product spot for a matte black water bottle on a wet
    gym floor, no people." → Claude asks at most three short questions, proposes
    three ideas, and captures the one you pick as a card.
-3. "Find me references for that light." → Claude searches for frames by light
-   and surface, shows what each candidate is, and banks the two you choose
-   behind the idea's direction, with their source pages.
-4. "Pick it." → Claude marks the card picked and tells you how many keyframes
-   a render would need and what they cost in credits.
-5. "Draw them." → Claude shows the price and waits for your yes. Today the
-   priced approve is on the Queue card in the studio, where Claude sends you;
-   when the connector's `quote` and `approve` tools ship, the same approval
-   happens in the chat.
+3. "Write the scene." → Claude reads your elements (the bottle you
+   photographed, the gym floor), writes the scene as timed shots in the chat,
+   takes your edits, and saves it onto the card with your photos attached.
+4. "What would it cost?" → Claude picks the card and quotes it: the keyframes,
+   the clip per shot, your balance.
+5. "Draw the keyframes." → Claude repeats the price and waits for your yes,
+   then approves; it polls the job and shows the stills. The clip is the same
+   again: a quote, your yes, the render.
 
 ## Data
 
-The connector sends the text you type for an idea (title, hook, logline, a
-direction), reference-image search phrases, and the ids of cards and images to
-your own Zero Page Studio account at `zeropage-studio.fly.dev`, over HTTPS, with
-the OAuth sign-in you approve. The studio stores what you capture, pick and
-archive on your board, and the reference images you bank, under your account.
-Scene writing, keyframes and renders run on the studio's AI providers and are
-charged in credits from your balance after a price is shown; see the studio's
+The connector sends the text you type for an idea (title, hook, logline), the
+scene prompts Claude writes with you, and the ids of cards and of your own
+element photos to your Zero Page Studio account at `zeropage-studio.fly.dev`,
+over HTTPS, with the OAuth sign-in you approve. The studio stores what you
+capture, pick, archive and write on your board under your account. Keyframes
+and renders run on the studio's AI providers and are charged in credits from
+your balance after a price is shown and you approve; see the studio's
 [privacy policy](https://zeropage.studio/privacy) and
 [terms](https://zeropage.studio/terms) for what is kept and for how long. The
 plugin itself runs no code, stores nothing, and sends nothing anywhere else.

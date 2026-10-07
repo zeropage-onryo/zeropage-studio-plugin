@@ -34,17 +34,16 @@ created their workspace yet: ask them to sign in once at https://zeropage.studio
    `title`, `hook` (what we see first) and `logline` (the one-sentence story).
    Put the brief's own words into `spark` so the idea remembers where it came
    from. Do not capture ideas they did not choose.
-4. Reply with the new card ids and say that the scene itself is written in the
-   studio (or with `generate` where that tool is offered), not here.
+4. Reply with the new card ids. The scene itself is written next, in this
+   chat, with the write-scene skill.
 
 ## Deciding on existing ideas
 
 - `idea` with a card's id returns it in full, including any written scene
-  prompt and its reference images. Read it before advising.
-- `pick` marks an idea worth making. It spends nothing; the reply carries
-  `keyframes` (how many stills a rendered version would need and their credit
-  cost) which you should repeat to the person as information, not as a step
-  you take.
+  prompt and the photos it is rendered against. Read it before advising.
+- `pick` marks an idea worth making. It spends nothing; the reply may carry
+  `keyframes` (how many stills a render would need and their credit cost),
+  which you repeat as information. Rendering is render-and-status's job.
 - `archive` takes an idea off the board with a `reason`. Use one of the words
   the tool lists (weak concept, no turn, no stake, off-brand, unshootable, seen
   it); the reason is what the studio learns from. Archiving is reversible
