@@ -8,8 +8,9 @@ description: Explain what is free and what costs credits in Zero Page Studio, re
 ## What is free
 
 Reading and deciding never charges: `board`, `idea`, `search`, `stats`,
-`elements`, `quote`, `job`. Writing a decision or a scene never charges
-either: `capture`, `pick`, `archive`, `shoot`, `write_scene`. Writing the scene
+`projects`, `project`, `project_chat`, `elements`, `quote`, `job`. Writing a
+decision, a scene or a project never charges either: `capture`, `pick`,
+`archive`, `shoot`, `write_scene`, `create_project`, `save_chat`. Writing the scene
 prompt happens in this chat, so it costs the studio nothing.
 
 ## What costs credits

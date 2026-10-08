@@ -3,8 +3,8 @@
 Run your [Zero Page Studio](https://zeropage.studio) idea board from a
 conversation with Claude: turn a brief into a few story ideas you approve
 before anything is written or rendered, set the look from reference images you
-attach, and start and follow renders with the price shown and your approval
-first.
+attach, start and follow renders with the price shown and your approval
+first, and keep each piece of work in a project you can come back to.
 
 Zero Page Studio is an AI pre-production studio for creators and filmmakers.
 You give it an idea and reference images; it writes one paste-ready scene
@@ -15,7 +15,8 @@ price in front of every spend.
 
 - **A connector**: the studio's remote MCP server at
   `https://zeropage-studio.fly.dev/mcp`. You sign in with your Zero Page Studio
-  account; the tools read and write your own board and nobody else's.
+  account; the tools read and write your own board and projects and nobody
+  else's.
 - **Five skills** that teach Claude the studio workflow:
   - `concept-board` — a brief becomes two to four ideas you choose between, then
     cards on your board. Reads and decisions only.
@@ -31,8 +32,17 @@ price in front of every spend.
     a 429 means.
 
 The connector offers these tools: `board`, `idea`, `search`, `capture`, `pick`,
-`shoot`, `archive`, `stats`, `elements`, `write_scene`, `quote`, `approve`,
+`shoot`, `archive`, `stats`, `projects`, `project`, `project_chat`,
+`create_project`, `save_chat`, `elements`, `write_scene`, `quote`, `approve`,
 `job`. Only `approve` spends, and only after `quote` has shown the price.
+
+**Projects** are the same ones on your projects board in the studio. `projects`
+lists them; `project` reopens one, whether you made it here or in the studio,
+with its brief, its look, its scenes, the reference images those scenes used,
+its renders and the latest turns of its chat; `project_chat` pages back
+through that chat. `create_project` starts a new one, and `save_chat` keeps
+this conversation with it, so the next time the project is opened, here or in
+the studio, the conversation is there.
 
 ## Before you use it
 
@@ -57,14 +67,21 @@ The connector offers these tools: `board`, `idea`, `search`, `capture`, `pick`,
 5. "Draw the keyframes." → Claude repeats the price and waits for your yes,
    then approves; it polls the job and shows the stills. The clip is the same
    again: a quote, your yes, the render.
+6. "Keep this with my bottle-ad project." → Claude saves the conversation into
+   the project. Next week, "open the bottle ad" brings back its brief, its
+   scenes, the references they used and this chat.
 
 ## Data
 
 The connector sends the text you type for an idea (title, hook, logline), the
-scene prompts Claude writes with you, and the ids of cards and of your own
-element photos to your Zero Page Studio account at `zeropage-studio.fly.dev`,
-over HTTPS, with the OAuth sign-in you approve. The studio stores what you
-capture, pick, archive and write on your board under your account. Keyframes
+scene prompts Claude writes with you, the ids of cards and of your own
+element photos, a project's name, brief and look when you create one, and --
+only when you ask Claude to keep a conversation with a project -- the text of
+that conversation's turns, to your Zero Page Studio account at
+`zeropage-studio.fly.dev`, over HTTPS, with the OAuth sign-in you approve. The
+studio stores what you capture, pick, archive and write on your board, and
+the projects and saved conversations, under your account; a saved
+conversation is kept until you delete its project in the studio. Keyframes
 and renders run on the studio's AI providers and are charged in credits from
 your balance after a price is shown and you approve; see the studio's
 [privacy policy](https://zeropage.studio/privacy) and
